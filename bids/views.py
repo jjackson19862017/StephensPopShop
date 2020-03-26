@@ -31,14 +31,13 @@ def bid_on_auction(request):
             """ Make sure Auction is still Open """
             if timezone.now() >= auction.start_time and timezone.now() < auction.end_time:
                 product = Product.objects.get(id=product_id)
-                product.current_auction_price += int(request.POST['UpBid'])
-                product.save()
                 current_bid = Bid.objects.filter(product_id=product_id)
                 if current_bid:
                     bid = current_bid[0]
                     bid.user_id = request.user
                     bid.bid_time = timezone.now()
                     bid.bid_views += 1
+                    bid.current_bid += int(request.POST['UpBid'])
                     bid.save()
                 else:
                     new_bid = Bid()
@@ -47,6 +46,7 @@ def bid_on_auction(request):
                     new_bid.user_id = request.user
                     new_bid.bid_time = timezone.now()
                     new_bid.bid_views += 1
+                    new_bid.current_bid += int(request.POST['UpBid'])
                     new_bid.save()
                 messages.error(request, "Well done you have placed a bid.")
             else:

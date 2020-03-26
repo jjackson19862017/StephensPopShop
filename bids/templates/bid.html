@@ -12,7 +12,7 @@
             <p class="product-description">{{ i.product_id.description }}</p>
             <hr class='block-divider block-divider--longer'>
             <p>Winning Bidder: {{ i.user_id.username }}</p>
-            <p>Winning Bid: {{ i.product_id.current_auction_price }}</p>
+            <p>Winning Bid: {{ i.current_bid }}</p>
         </div>
         <div class="panel-footer">
             <p class="product-description text-center">Status: <span> {{ i.auction_id.auction_open }} </span></p>

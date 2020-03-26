@@ -110,3 +110,9 @@ Create Auction app for the owner to create auctions.
 Create Bids app for the users to bid on auctions.
 
 --> "Bid App Created"
+
+So now I am back to where I started however there are a few adjustments I have to make due to the fields changing tables.
+
+Also got rid of home redirect as I am not using a home app this time around.
+
+--> "Field Updates"
