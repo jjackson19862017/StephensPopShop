@@ -78,3 +78,9 @@ Time to create my project called "popshop", and change the settings file to hide
 I will also create the static and media folder structure.
 
 --> "Project Setup"
+
+Create accounts for users.
+
+Created Superuser
+
+--> "Accounts App Created"

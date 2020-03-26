@@ -1,0 +1,20 @@
+{% extends "base.html" %} {% block navbar_title %} Pop World - Profile {% endblock navbar_title %}{% block content %}
+<div class="row">
+    <div class="jumbotron text-center">
+        <div class="container">
+            <h1>{{user.username}}'s Profile</h1>
+            <div class="profile-detail">
+                <div class='col-xs-10 col-xs-offset-1 col-sm-offset-0 col-sm-12 col-md-12'>
+                    <h3>Name:</h3> <span> {{ user.first_name }} {{ user.last_name }}</span></div>
+                <div class='col-xs-10 col-xs-offset-1 col-sm-offset-0 col-sm-12 col-md-12'>
+                    <h3>Email:</h3> <span>{{ user.email}}</span></div>
+                <div class='col-xs-10 col-xs-offset-1 col-sm-offset-0 col-sm-12 col-md-12'>
+                    <h3>Phone Number:</h3><span>{{ user.userprofile.telephone}}</span></div>
+                <div class='col-xs-10 col-xs-offset-1 col-sm-offset-0 col-sm-12 col-md-12'>
+                    <h3>Address:</h3><span>{{ user.userprofile.address1}}<br>{{ user.userprofile.town}}<br>{{ user.userprofile.county}}<br>{{ user.userprofile.postcode}}<br>{{ user.userprofile.country}}</span></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
