@@ -71,4 +71,10 @@ In this section, you should mention all of the languages, frameworks, libraries,
 
 ### Thursday 26th March 2020
 
-Started project for a fourth time, going to commit my readme.md and env.py and gitignore as my intial commit.
+Started project for a fourth time, going to commit my readme.md and env.py and gitignore as my --> "Initial Commit".
+
+Time to create my project called "popshop", and change the settings file to hide hidden keys etc.
+
+I will also create the static and media folder structure.
+
+--> "Project Setup"
