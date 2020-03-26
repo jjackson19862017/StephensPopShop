@@ -94,3 +94,7 @@ Created Templates folder as I forgot to do that when I was creating my static fo
 Create Search app for users to search for potential products.
 
 --> "Search App Created"
+
+Create Cart app for users to buy products.
+
+--> "Cart App Created"
