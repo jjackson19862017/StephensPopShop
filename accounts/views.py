@@ -7,11 +7,18 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.shortcuts import get_object_or_404
 from django.db.models.signals import post_save
-
+from products.views import all_products
 
 
 # Create your views here.
-
+def index(request):
+    """
+    if the user is already logged in then goes to home
+    """
+    if request.user.is_authenticated:
+        return redirect(reverse('products'))
+    """A view that displays the index page"""
+    return render(request, "index.html")
 
 
 def logout(request):

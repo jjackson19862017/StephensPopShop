@@ -84,3 +84,9 @@ Create accounts for users.
 Created Superuser
 
 --> "Accounts App Created"
+
+Create Products app for Products to populate with.
+
+Created Templates folder as I forgot to do that when I was creating my static folder.
+
+--> "Products App Created"
