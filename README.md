@@ -98,3 +98,7 @@ Create Search app for users to search for potential products.
 Create Cart app for users to buy products.
 
 --> "Cart App Created"
+
+Create Checkout app for users to make payments.
+
+--> "Checkout App Created"

@@ -19,6 +19,7 @@ from accounts import urls as urls_accounts
 from products import urls as urls_products
 from search import urls as urls_search
 from cart import urls as urls_cart
+from checkout import urls as urls_checkout
 from django.views import static
 from .settings import MEDIA_ROOT
 from django.conf import settings
@@ -31,4 +32,5 @@ urlpatterns = [
     url(r'^products/', include(urls_products)),
     url(r'^search/', include(urls_search)),
     url(r'^cart/', include(urls_cart)),
+    url(r'^checkout/', include(urls_checkout)),
 ]
