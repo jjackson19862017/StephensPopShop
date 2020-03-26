@@ -106,3 +106,7 @@ Create Checkout app for users to make payments.
 Create Auction app for the owner to create auctions.
 
 --> "Auction App Created"
+
+Create Bids app for the users to bid on auctions.
+
+--> "Bid App Created"
