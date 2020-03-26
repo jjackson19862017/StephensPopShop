@@ -1,0 +1,48 @@
+{% extends 'base.html' %}{% block navbar_title %} Pop World - Auctions {% endblock navbar_title %} {% block content %}
+
+<div class="row">
+    <div class="jumbotron text-center">
+        <div class="container">
+            <h1>New Auctions</h1>
+            <p>If you wish to Bid on these items you can.<br>Once an Auction has ended and you are the winner.<br>Please head to the Checkout to Claim your Prize.</p>
+        </div>
+    </div>
+
+
+    {% for auction in auctions %} {% if auction.auction_open == "Open" and auction.product_id.current_auction_price == 0 %}
+    <div class="col-xs-10 col-xs-offset-1 col-sm-offset-0 col-sm-6 col-md-4 display panel panel-primary">
+        <div class="panel-heading text-center">
+            <h3 class="panel-title">{{ auction.product_id.name}}</h3>
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="product" style="background-image: url('{{MEDIA_URL}}{{ auction.product_id.image }}')"></div>
+                <div class="text-center">
+                    <p class="product-description">{{ auction.product_id.description }}</p>
+                    <hr class='block-divider block-divider--longer'>
+                    <p class="product-description">End Time: <span> {{ auction.end_time }} </span></p>
+                    <p class="product-description">Current Bid: <span> {{ auction.product_id.current_auction_price }} </span></p>
+                    <p class="product-description">Highest Bidder: <span> {{ auction.user_id.id }} </span></p>
+
+
+                </div>
+            </div>
+            <div class="panel-footer">
+                <p class="product-description text-center">Status: <span> {{ auction.auction_open }} </span></p>
+
+                <form action="{% url 'open_auction' %}" method="POST">
+                    {% csrf_token %}
+                    <div class="input-group">
+                        <input type="hidden" name="product_id" value={{ auction.product_id.id }} />
+                        <input name="UpBid" type="number" min="5" max="9999" class="form-control" placeholder="Enter minimum £ 5">
+                        <span class="input-group-btn"><button class="btn btn-success">Increase Bid</button></span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    {% endif %} {% endfor %}
+</div>
+
+
+{% endblock %}

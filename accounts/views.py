@@ -1,13 +1,15 @@
-from django.shortcuts import render, redirect, HttpResponseRedirect
-from django.contrib import messages, auth
-from django.core.urlresolvers import reverse
-from .forms import UserLoginForm, UserRegistrationForm, UserProfileForm
-from django.template.context_processors import csrf
+from django.contrib import auth, messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from django.shortcuts import get_object_or_404
+from django.core.urlresolvers import reverse
 from django.db.models.signals import post_save
+from django.shortcuts import (HttpResponseRedirect, get_object_or_404,
+                              redirect, render)
+from django.template.context_processors import csrf
+
 from products.views import all_products
+
+from .forms import UserLoginForm, UserProfileForm, UserRegistrationForm
 
 
 # Create your views here.
@@ -90,5 +92,3 @@ def register(request):
         profile_form = UserProfileForm()
     args = {'user_form': registration_form, 'profile_form': profile_form}
     return render(request, 'register.html', args)
-
-    

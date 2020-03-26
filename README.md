@@ -102,3 +102,7 @@ Create Cart app for users to buy products.
 Create Checkout app for users to make payments.
 
 --> "Checkout App Created"
+
+Create Auction app for the owner to create auctions.
+
+--> "Auction App Created"
