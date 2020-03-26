@@ -90,3 +90,7 @@ Create Products app for Products to populate with.
 Created Templates folder as I forgot to do that when I was creating my static folder.
 
 --> "Products App Created"
+
+Create Search app for users to search for potential products.
+
+--> "Search App Created"
