@@ -37,8 +37,10 @@ def bid_on_auction(request):
                     bid.user_id = request.user
                     bid.bid_time = timezone.now()
                     bid.bid_views += 1
-                    bid.current_bid += int(request.POST['UpBid'])
+                    bid.bid_price += int(request.POST['UpBid'])
                     bid.save()
+                    auction.bid_number += 1
+                    auction.save()
                 else:
                     new_bid = Bid()
                     new_bid.product_id = product
@@ -46,8 +48,10 @@ def bid_on_auction(request):
                     new_bid.user_id = request.user
                     new_bid.bid_time = timezone.now()
                     new_bid.bid_views += 1
-                    new_bid.current_bid += int(request.POST['UpBid'])
+                    new_bid.bid_price += int(request.POST['UpBid'])
                     new_bid.save()
+                    auction.bid_number += 1
+                    auction.save()
                 messages.error(request, "Well done you have placed a bid.")
             else:
                 auction.auction_open = "Closed"

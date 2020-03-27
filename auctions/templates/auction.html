@@ -7,9 +7,7 @@
             <p>Below are New Items that nobody has bid on.<br>Be the first to bid.<br>Once an Auction has ended and you are the winner.<br>Please head to the Checkout to Claim your Prize.</p>
         </div>
     </div>
-
-
-    {% for auction in auctions %} {% if auction.auction_open == "Open" and auction.product_id.current_auction_price == 0 %}
+    {% for auction in auctions %}{% if auction.status == "Open" and auction.bid_number == 1 %}
     <div class="col-xs-10 col-xs-offset-1 col-sm-offset-0 col-sm-6 col-md-4 display panel panel-primary">
         <div class="panel-heading text-center">
             <h3 class="panel-title">{{ auction.product_id.name}}</h3>
@@ -20,16 +18,12 @@
                 <div class="text-center">
                     <p class="product-description">{{ auction.product_id.description }}</p>
                     <hr class='block-divider block-divider--longer'>
-                    <p class="product-description">End Time: <span> {{ auction.end_time }} </span></p>
-                    <p class="product-description">Current Bid: <span> {{ auction.product_id.current_auction_price }} </span></p>
-                    <p class="product-description">Highest Bidder: <span> {{ auction.user_id.id }} </span></p>
-
-
+                    <p class="product-text">End Time: <span> {{ auction.end_time }} </span></p>
                 </div>
             </div>
             <div class="panel-footer">
-                <p class="product-description text-center">Status: <span> {{ auction.auction_open }} </span></p>
-
+                <p class="product-text text-center">Status: <span> {{ auction.status }} </span></p>
+                <p class="product-text text-center">Status: <span> {{ auction.bid_number }} </span></p>
                 <form action="{% url 'open_auction' %}" method="POST">
                     {% csrf_token %}
                     <div class="input-group">
@@ -41,7 +35,14 @@
             </div>
         </div>
     </div>
-    {% endif %}{% empty %}
+    {% elif auction.bid_number > 1 %}
+    <div class="jumbotron text-center">
+        <div class="container">
+            <h3 class="text-center">Sorry, but there are no Auctions to display.</h3>
+            <p class="text-center">Please comeback another time.</p>
+        </div>
+    </div>
+    {%endif%} {% empty %}
     <div class="jumbotron text-center">
         <div class="container">
             <h3 class="text-center">Sorry, but there are no Auctions to display.</h3>

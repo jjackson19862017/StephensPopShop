@@ -57,6 +57,10 @@ footer {
     height: 140px;
 }
 
+.product-text {
+    color: black;
+}
+
 .panel-heading {
     height: 60px;
 }

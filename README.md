@@ -140,3 +140,7 @@ I have changed everything from Pop World to Pop Shop.
 I have also hidden the cart if it is empty.  This is to stop people from openning an empty cart.
 
 --> "Shop Update"
+
+I have got the bids to work with the new field in the other table
+
+--> "Bids Working"
