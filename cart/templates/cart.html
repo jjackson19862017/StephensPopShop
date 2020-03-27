@@ -1,8 +1,8 @@
-{% extends 'base.html' %} {% load static from staticfiles %} {% load bootstrap_tags %} {% block navbar_title %} Pop World - Cart {% endblock navbar_title %} {% block content %}
+{% extends 'base.html' %} {% load static from staticfiles %} {% load bootstrap_tags %} {% block navbar_title %} Pop Shop - Cart {% endblock navbar_title %} {% block content %}
 <div class="row row-flex">
     <div class="display panel panel-primary">
         <div class="panel-heading text-center">
-            <h3 class="panel-title">Cart</h3>
+            <h1 class="panel-title">Cart</h1>
         </div>
         <!-- Table -->
         <table class="table">
@@ -36,8 +36,8 @@
         </table>
         <div class="panel-footer footer-blue">
             <h3>Total
-                <span aria-hidden="true"></span>£{{ total }}
-                <a href="{% url 'checkout' %}" class="btn btn-success" role="button"><span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>Checkout</a></h3>
+                <span aria-hidden="true"></span>£{{ total }}</h3>
+            <a href="{% url 'checkout' %}" class="btn btn-success" role="button"><span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>Checkout</a>
         </div>
     </div>
 </div>

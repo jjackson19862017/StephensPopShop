@@ -134,3 +134,9 @@ I have found a problem with paying for things with Stripe so I am watching the v
 My jquery and the stripe js was being loaded out of order.
 
 --> "Fixed Stripe Payments"
+
+I have changed everything from Pop World to Pop Shop.
+
+I have also hidden the cart if it is empty.  This is to stop people from openning an empty cart.
+
+--> "Shop Update"
