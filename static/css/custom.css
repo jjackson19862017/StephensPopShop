@@ -53,6 +53,10 @@ footer {
     margin: 33px 10px 10px 10px;
 }
 
+.product-description {
+    height: 140px;
+}
+
 .panel-heading {
     height: 60px;
 }

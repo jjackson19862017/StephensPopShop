@@ -128,3 +128,9 @@ I thought it would be some nice feedback for the user, if the loops were empty. 
 I also changed the way the cart and checkout looks, they now appear as tables so it looks like an invoice.
 
 --> "Empty Lists UI Update"
+
+I have found a problem with paying for things with Stripe so I am watching the videos again.
+
+My jquery and the stripe js was being loaded out of order.
+
+--> "Fixed Stripe Payments"
