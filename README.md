@@ -116,3 +116,9 @@ So now I am back to where I started however there are a few adjustments I have t
 Also got rid of home redirect as I am not using a home app this time around.
 
 --> "Field Updates"
+
+While building and testing my website, I have found it annoying to remember who I am logged in as, so I have modified the base.html to run an if statement to see if I am a superuser.  If that is true then the navbar will turn Red.
+
+I have also moved around the links on the navbar.
+
+--> "Navbar Update"

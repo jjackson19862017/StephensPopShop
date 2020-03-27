@@ -1,3 +1,16 @@
+/* Navbar for SuperUser */
+
+.navbar-superuser {
+    background-image: linear-gradient(#b94a48, #c71c22 60%, #dd5600) !important;
+    background-color: orangered !important;
+    border-color: red;
+}
+
+.navbar-default .navbar-nav>li>a:hover,
+.navbar-default .navbar-nav>li>a:focus {
+    background-color: #dd5600 !important;
+}
+
 body {
     font-family: Arial;
     padding-top: 70px;
