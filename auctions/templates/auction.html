@@ -4,7 +4,7 @@
     <div class="jumbotron text-center">
         <div class="container">
             <h1>New Auctions</h1>
-            <p>If you wish to Bid on these items you can.<br>Once an Auction has ended and you are the winner.<br>Please head to the Checkout to Claim your Prize.</p>
+            <p>Below are New Items that nobody has bid on.<br>Be the first to bid.<br>Once an Auction has ended and you are the winner.<br>Please head to the Checkout to Claim your Prize.</p>
         </div>
     </div>
 
@@ -41,7 +41,17 @@
             </div>
         </div>
     </div>
-    {% endif %} {% endfor %}
+    {% endif %}{% empty %}
+    <div class="jumbotron text-center">
+        <div class="container">
+            <h3 class="text-center">Sorry, but there are no Auctions to display.</h3>
+            {% if user.is_superuser %}
+            <p class="text-center">Would you like to Start an Auction?</p>
+            <p><span><a class="btn btn-success btn-lg" href="{% url 'add_auctions' %}" role="button"><i class="fa fa-plus"></i> Start Auction</a></span> {% else %}
+                <p class="text-center">Please comeback another time.</p>
+                {% endif %}
+        </div>
+    </div> {% endfor %}
 </div>
 
 

@@ -122,3 +122,9 @@ While building and testing my website, I have found it annoying to remember who 
 I have also moved around the links on the navbar.
 
 --> "Navbar Update"
+
+I thought it would be some nice feedback for the user, if the loops were empty.  Ie no products or auctions.  I found the solution on <https://docs.djangoproject.com/en/1.11/ref/templates/builtins/>
+
+I also changed the way the cart and checkout looks, they now appear as tables so it looks like an invoice.
+
+--> "Empty Lists UI Update"

@@ -1,6 +1,6 @@
 /* Navbar for SuperUser */
 
-.navbar-superuser {
+.superuser {
     background-image: linear-gradient(#b94a48, #c71c22 60%, #dd5600) !important;
     background-color: orangered !important;
     border-color: red;
@@ -53,12 +53,12 @@ footer {
     margin: 33px 10px 10px 10px;
 }
 
-.panel {
-    min-height: 550px;
-}
-
 .panel-heading {
     height: 60px;
+}
+
+.footer-blue {
+    background-color: #40abe8;
 }
 
 
@@ -140,6 +140,10 @@ p {
 }
 
 li {
+    color: white;
+}
+
+h3 {
     color: white;
 }
 

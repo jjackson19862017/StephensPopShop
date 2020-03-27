@@ -1,12 +1,14 @@
 {% extends 'base.html' %} {% block navbar_title %} Pop World - Products {% endblock navbar_title %} {% block content %}
 <div class="row row-flex">
     <div class="jumbotron text-center">
-        <div class="containter">
+        <div class="container">
             <h1>Pop World Products</h1>
-            <p>Here is a collection of products we sell here at Pop World.<br>You may buy as many as you like.<br>Once you have made your selection,<br>please goto the checkout and pay for them.</p>
+            <p>Here is a collection of products we sell here at Pop World.<br>You may buy as many as you like.<br>Once you have made your selection,<br>Please goto the checkout and pay for them.</p>
         </div>
     </div>
     {% for product in products %}
+
+
     <div class="col-xs-10 col-xs-offset-1 col-sm-offset-0 col-sm-6 col-md-4 display panel panel-primary">
         <div class="panel-heading text-center">
             <h3 class="panel-title">{{ product.name}}</h3>
@@ -36,6 +38,22 @@
         </div>
 
     </div>
+    {% empty %}
+    <div class="jumbotron text-center">
+        <div class="container">
+            <h3 class="text-center">Sorry, but there are no Products to display.</h3>
+            {% if user.is_superuser %}
+            <p class="text-center">Would you like to add some?</p>
+            <p><span><a class="btn btn-success btn-lg" href="{% url 'addproducts' %}" role="button"><i class="fa fa-plus"></i> Add Product</a></span> {% else %}
+                <p class="text-center">Please comeback another time.</p>
+                {% endif %}
+        </div>
+    </div>
+
+
     {% endfor %}
+
+
+
 </div>
 {% endblock content %}
