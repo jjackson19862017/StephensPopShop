@@ -23,7 +23,7 @@ def all_auctions(request):
 def open_auctions(request):
     """ Creates a view so only registered users can see the auctions that are currently open """
     if request.user.is_authenticated:
-        auctions = Auction.objects.filter(auction_open__exact='Open')
+        auctions = Auction.objects.filter(status__exact='Open')
         return render(request, "auction.html", {"auctions": auctions})
     else:
         messages.error(request, "Im sorry but you need to be logged in")
@@ -38,20 +38,24 @@ def open_auction(request):
     if request.method == "POST":
             product_id = request.POST['product_id']
             auction = Auction.objects.get(product_id=product_id)
+            
             """ Make sure Auction is still Open """
             if timezone.now() >= auction.start_time and timezone.now() < auction.end_time:
                 product = Product.objects.get(id=product_id)
                 current_bid = Bid.objects.filter(product_id=product_id)
                 if current_bid:
+                    print("Route A")
                     bid = current_bid[0]
                     bid.user_id = request.user
                     bid.bid_time = timezone.now()
                     bid.bid_views += 1
                     bid.bid_price += int(request.POST['UpBid'])
                     bid.save()
+                    auction.current_price = bid.bid_price
                     auction.bid_number += 1
                     auction.save()
                 else:
+                    print("Route B")
                     new_bid = Bid()
                     new_bid.product_id = product
                     new_bid.auction_id = auction
@@ -60,11 +64,12 @@ def open_auction(request):
                     new_bid.bid_views += 1
                     new_bid.bid_price += int(request.POST['UpBid'])
                     new_bid.save()
+                    auction.current_price = bid.bid_price
                     auction.bid_number += 1
                     auction.save()
                 messages.error(request, "Well done you have placed a bid.")
             else:
-                auction.auction_open = "Closed"
+                auction.status = "Closed"
                 auction.save()
                 messages.error(request, "This Auction is closed.")
             

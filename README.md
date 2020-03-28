@@ -144,3 +144,24 @@ I have also hidden the cart if it is empty.  This is to stop people from opennin
 I have got the bids to work with the new field in the other table
 
 --> "Bids Working"
+
+Safe this for later
+
+            {% if i.user_id.username != user.username %}
+            <form action="{% url 'bid_on_auction' %}" method="POST">
+                {% csrf_token %}
+                <div class="input-group">
+                    <input type="hidden" name="product_id" value={{ auction.product_id.id }} />
+                    <input name="UpBid" type="number" min="5" max="9999" class="form-control" placeholder="Enter minimum £ 5">
+                    <span class="input-group-btn"><button class="btn btn-success">Increase Bid</button></span>
+                </div>
+            </form>
+          {%else%}
+            <p class="product-text text-center">You cannot bid again, <br>Wait till someone else bids.</p>
+            {%endif%}
+
+### Saturday 28th March 2020
+
+I tried to see if I could display my bid data on my auction site, however after many tries.  I created a field in the auction model that is updated by the open_auction
+
+--> "Auction Models Updated"

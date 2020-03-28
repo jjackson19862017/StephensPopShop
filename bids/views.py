@@ -54,7 +54,7 @@ def bid_on_auction(request):
                     auction.save()
                 messages.error(request, "Well done you have placed a bid.")
             else:
-                auction.auction_open = "Closed"
+                auction.status = "Closed"
                 auction.save()
                 messages.error(request, "This Auction is closed.")
             
