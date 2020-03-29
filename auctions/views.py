@@ -77,19 +77,7 @@ def open_auction(request):
             
     return redirect(reverse('auctions'))
         
-def buy_now(request):
 
-    """ Allows a user to buy an Item Straight away, closing the Auction """
-    if request.method == "POST":
-        product_id = request.POST['product_id']
-        auction = Auction.objects.get(product_id=product_id)
-        """ Make sure Auction is still Open """
-        if timezone.now() >= auction.start_time and timezone.now() < auction.end_time:
-            product = Product.objects.get(id=product_id)
-            return render(request, "bid.html")
-        else:
-            messages.error(request, "This Auction is closed")
-    return redirect(reverse('auctions'))
 
 def add_auctions(request):
     """ Allows Owner to Open Auctions """

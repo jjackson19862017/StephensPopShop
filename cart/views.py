@@ -24,6 +24,24 @@ def add_to_cart(request, id):
     request.session['newprice'] = price
     return redirect(reverse('view_cart'))
 
+def bid_to_cart(request, id):
+    """Add a quantity of the specified product to the cart"""
+    quantity = int(request.POST.get('quantity'))
+    price = float(request.POST.get('price'))
+    
+    print("id: " + str(id))
+    print("price: " + str(price))
+
+    cart = request.session.get('cart', {})
+    if id in cart:
+        cart[id] = int(cart[id]) + quantity  
+    else:
+        cart[id] = cart.get(id, quantity) 
+
+    request.session['cart'] = cart
+    request.session['newprice'] = price
+    return redirect(reverse('bid_checkout'))
+
 
 def adjust_cart(request, id):
     """

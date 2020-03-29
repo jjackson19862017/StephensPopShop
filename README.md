@@ -227,4 +227,10 @@ Updated the auction.html, to reflect if you have placed the highest bid or not a
 
 Updated the views.py in auction to reflect what user has placed a bid.
 
+Tested my new changes with logging in as different users and seeing the outcome on the website.
+
 --> "Bidding Winner Updated"
+
+The Winning Bid button adds, the winning bid to a cart and sends you to a winning bid checkout.
+
+--> "Winner to Checkout"
