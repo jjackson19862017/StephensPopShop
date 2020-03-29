@@ -22,20 +22,26 @@
         <div class="panel-footer">
             <p class="product-text text-center">Status: <span> {{ i.auction_id.status }} </span></p>
 
+            {% if i.user_id.username == user.username %}
+
+
+
             <form action="{% url 'add_to_cart' i.product_id.id %}" method="post">
                 {% csrf_token %}
                 <div class="input-group">
-                    <input type="number" name="price" value="{{ i.bid_price }}" class="form-control" placeholder="">
-                    <input type="number" name="quantity" value="1" class="form-control" placeholder="Quantity">
-                    <div class="input-group-btn">
+                    <input type="hidden" name="price" value="{{ i.bid_price }}" class="form-control" placeholder="">
+                    <input type="hidden" name="quantity" value="1" class="form-control" placeholder="Quantity">
+                    <div class="input-group-btn text-center">
                         <button class="btn btn-success" type="submit">My Pay</button>
                     </div>
                 </div>
             </form>
-
-
+            {% else %}
+            <h4 class="text-center">YOUR NOT A WINNER</h4>
+            {% endif %}
         </div>
     </div>
+
     {%endif%} {% empty %}
     <div class="jumbotron text-center">
         <div class="container">

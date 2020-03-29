@@ -12,6 +12,7 @@ class Auction(models.Model):
     end_time = models.DateTimeField(blank=True, null=True, default=timezone.now)
     status = models.CharField(max_length=10, blank=False, null=False, default="Open")
     current_price = models.DecimalField(max_digits=4, decimal_places=2, default=0)
+    current_bidder = models.CharField(max_length=100, blank=False, null=False, default="")
 
     def __str__(self):
         return  "product_id:" + str(self.product_id)

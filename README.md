@@ -221,3 +221,10 @@ def add_to_cart(request, id):
 Thank you Anne and Tim about sessions, I have got further now
 
 --> "Session Price"
+
+Updated the Bid.html, to reflect if you have won the auction or not and if you have gives you the chance to pay for your win.
+Updated the auction.html, to reflect if you have placed the highest bid or not and if you losing the auction, it gives you chance to bid again.
+
+Updated the views.py in auction to reflect what user has placed a bid.
+
+--> "Bidding Winner Updated"
