@@ -234,3 +234,9 @@ Tested my new changes with logging in as different users and seeing the outcome 
 The Winning Bid button adds, the winning bid to a cart and sends you to a winning bid checkout.
 
 --> "Winner to Checkout"
+
+I now need to figure out is how to delete, an auction once its been won and paid for???
+
+I have also found a problem with my cart as it only allows one newprice, so if there were multiple items in the cart they would all get the same price.
+
+--> "Problems"
