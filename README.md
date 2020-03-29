@@ -175,3 +175,49 @@ Unfortunately can't get it to work at the present time, will focus on the task I
 Im so close to getting it working, just need some help.
 
 --> "Nearly there with putting a winning bid into a cart"
+
+I have spent nearly 2 hours looking on how to put this PRICE from add_to_cart view into the cart_contents context
+
+def add_to_cart(request, id):
+    """Add a quantity of the specified product to the cart"""
+    quantity = int(request.POST.get('quantity'))
+    price = float(request.POST.get('price'))
+    print("id: " + str(id))
+    print("price: " + str(price))
+
+    cart = request.session.get('cart', {})
+    if id in cart:
+        cart[id] = int(cart[id]) + quantity  
+    else:
+        cart[id] = cart.get(id, quantity) 
+
+    request.session['cart'] = cart
+    return redirect(reverse('view_cart'))
+
+  def cart_contents(request):
+    """
+    Ensures that the cart contents are available when rendering
+    every page
+    """
+    cart = request.session.get('cart', {})
+
+    cart_items = []
+    total = 0
+    product_count = 0
+    
+    for id, quantity in cart.items():
+        product = get_object_or_404(Product, pk=id)
+        
+        price = product.instant_buy_price
+
+        total += quantity * price
+        product_count += quantity
+        cart_items.append({'id': id, 'quantity': quantity, 'product': product})
+        print("product: "+str(product))
+        print("total: "+str(total))
+        print("product count: "+str(product_count))
+    return {'cart_items': cart_items, 'total': total, 'product_count': product_count}
+
+Thank you Anne and Tim about sessions, I have got further now
+
+--> "Session Price"
