@@ -58,9 +58,13 @@
                             </ul>
                         </li>
                         {% endif %} {% if user.is_authenticated %}
-                        <li><a href="{% url 'auctions' %}"><i class="fa fa-shopping-bag" aria-hidden="true"></i> New Auctions</a></li>
-                        <li><a href="{% url 'bid' %}"><i class="fa fa-user"></i> Bids</a></li>
-
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> Auctions<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="{% url 'auctions' %}"><i class="fa fa-arrow-right" aria-hidden="true"></i> Open Auctions</a></li>
+                                <li><a href="{% url 'bid' %}"><i class="fa fa-arrow-right"></i> Closed Auctions</a></li>
+                            </ul>
+                        </li>
                         {% if product_count == 0 %} {% else %}
 
                         <li>

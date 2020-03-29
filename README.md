@@ -165,3 +165,13 @@ Safe this for later
 I tried to see if I could display my bid data on my auction site, however after many tries.  I created a field in the auction model that is updated by the open_auction
 
 --> "Auction Models Updated"
+
+Updated some links, and changed the base.html to reflect open and closed auctions.
+
+Researched Countdown Timers for JS <https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_countdown>
+
+Unfortunately can't get it to work at the present time, will focus on the task I have been putting off and thats getting my winning bid to purchase.
+
+Im so close to getting it working, just need some help.
+
+--> "Nearly there with putting a winning bid into a cart"
