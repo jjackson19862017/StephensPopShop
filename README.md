@@ -273,6 +273,10 @@ When you open auctions it searches for any closed auctions and changes them to c
 
 --> "Tweaks"
 
+While on Call with Mentor my checkout payment method broke, hes the fix.
+
+--> "Checkout Fixed"
+
 IDEA: Allowing the owner to delete any auctions that he wants to, just incase they have made an error or theres a stock error.
 
 IDEA: change widget for date and time selector.

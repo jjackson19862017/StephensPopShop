@@ -10,6 +10,8 @@ from products.models import Product
 from .forms import MakePaymentForm, OrderForm
 from .models import OrderLineItem
 
+from decimal import Decimal
+
 # Create your views here.
 stripe.api_key = settings.STRIPE_SECRET
 
@@ -25,11 +27,10 @@ def checkout(request):
             order.save()
 
             cart = request.session.get('cart', {})
-            price = request.session.get('newprice', {})
             total = 0
             for id, quantity in cart.items():
                 product = get_object_or_404(Product, pk=id)
-                total += quantity * price
+                total += quantity * product.instant_buy_price
                 order_line_item = OrderLineItem(
                     order = order,
                     product = product,
@@ -78,7 +79,8 @@ def bid_checkout(request):
             cart = request.session.get('cart', {})
             price = request.session.get('newprice', {})
             auction_num = request.session.get('auction_num', {})
-            
+            price = Decimal(price)
+            price = round(price, 2)
             total = 0
             for id, quantity in cart.items():
                 product = get_object_or_404(Product, pk=id)
