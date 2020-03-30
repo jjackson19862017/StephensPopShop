@@ -6,11 +6,6 @@
     border-color: red;
 }
 
-.navbar-default .navbar-nav>li>a:hover,
-.navbar-default .navbar-nav>li>a:focus {
-    background-color: #dd5600 !important;
-}
-
 body {
     font-family: Arial;
     padding-top: 70px;
@@ -54,7 +49,7 @@ footer {
 }
 
 .product-description {
-    height: 140px;
+    min-height: 140px;
 }
 
 .product-text {

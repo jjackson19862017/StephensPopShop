@@ -254,3 +254,7 @@ The only issue, which I know I dont have time to fix is that you can't mix the t
 Updated the Winning Bid Checkout on looks and modified the Models.
 
 --> "Checkout Update"
+
+Updated the HTML to be more friendly for smaller devices.
+
+--> "UX Friendly"
