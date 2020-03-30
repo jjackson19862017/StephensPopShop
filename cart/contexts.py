@@ -9,14 +9,21 @@ def cart_contents(request):
     """
     cart = request.session.get('cart', {})
     price = request.session.get('newprice', {})
+    print(price)
     cart_items = []
     total = 0
     product_count = 0
     
     for id, quantity in cart.items():
         product = get_object_or_404(Product, pk=id)
-        
-        total += quantity * price
+        if price > 0.00:
+            
+            total += quantity * price
+            print("A: "+ str(total))
+        else:
+            
+            total += quantity * product.instant_buy_price
+            print("B: "+ str(total))
         product_count += quantity
         cart_items.append({'id': id, 'quantity': quantity, 'product': product})
         print("product: "+str(product))

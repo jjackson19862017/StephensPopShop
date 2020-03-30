@@ -222,6 +222,8 @@ Thank you Anne and Tim about sessions, I have got further now
 
 --> "Session Price"
 
+### Sunday 29th March 2020
+
 Updated the Bid.html, to reflect if you have won the auction or not and if you have gives you the chance to pay for your win.
 Updated the auction.html, to reflect if you have placed the highest bid or not and if you losing the auction, it gives you chance to bid again.
 
@@ -240,3 +242,11 @@ I now need to figure out is how to delete, an auction once its been won and paid
 I have also found a problem with my cart as it only allows one newprice, so if there were multiple items in the cart they would all get the same price.
 
 --> "Problems"
+
+### Monday 30th March 2020
+
+Fixed the code so that either Products and Winning Bids will goto the cart.
+
+The only issue, which I know I dont have time to fix is that you can't mix the two types of products, because otherwise the cart won't display the right prices.
+
+--> "Bids and Products Purchasing Working"
