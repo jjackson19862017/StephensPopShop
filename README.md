@@ -258,3 +258,9 @@ Updated the Winning Bid Checkout on looks and modified the Models.
 Updated the HTML to be more friendly for smaller devices.
 
 --> "UX Friendly"
+
+Updated the Bidcheckout with the ability to delete auctions on successul payments.
+
+My first test deleted all auctions, however in my haste I had selected all auctions.  So I confined my parameters to product id's.
+
+--> "Auction Deleting"

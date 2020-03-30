@@ -9,6 +9,8 @@ def cart_contents(request):
     """
     cart = request.session.get('cart', {})
     price = request.session.get('newprice', {})
+    auction_num = request.session.get('auction_num', {})
+    print("AN: "+str(auction_num))
     print(price)
     cart_items = []
     total = 0
@@ -29,4 +31,4 @@ def cart_contents(request):
         print("product: "+str(product))
         print("total: "+str(total))
         print("product count: "+str(product_count))
-    return {'cart_items': cart_items, 'total': total, 'product_count': product_count, 'price': price}
+    return {'cart_items': cart_items, 'total': total, 'product_count': product_count, 'price': price, 'auction_num':auction_num}

@@ -65,9 +65,9 @@ def open_auction(request):
                     new_bid.bid_views += 1
                     new_bid.bid_price += int(request.POST['UpBid'])
                     new_bid.save()
-                    auction.current_price = bid.bid_price
+                    auction.current_price = new_bid.bid_price
                     auction.bid_number += 1
-                    auction.current_bidder = str(bid.user_id)
+                    auction.current_bidder = str(new_bid.user_id)
                     auction.save()
                 messages.error(request, "Well done you have placed a bid.")
             else:

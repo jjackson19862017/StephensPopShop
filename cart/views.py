@@ -28,6 +28,7 @@ def bid_to_cart(request, id):
     """Add a quantity of the specified product to the cart"""
     quantity = int(request.POST.get('quantity'))
     price = float(request.POST.get('price'))
+    auction_num = int(request.POST.get('auction_num'))
     
     print("id: " + str(id))
     print("price: " + str(price))
@@ -40,6 +41,7 @@ def bid_to_cart(request, id):
 
     request.session['cart'] = cart
     request.session['newprice'] = price
+    request.session['auction_num'] = auction_num
     return redirect(reverse('bid_checkout'))
 
 

@@ -4,7 +4,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404, redirect, render, reverse
 from django.utils import timezone
-from bids.models import Bid
+from auctions.models import Auction
 from products.models import Product
 
 from .forms import MakePaymentForm, OrderForm
@@ -73,12 +73,16 @@ def bid_checkout(request):
             order.date = timezone.now()
             order.save()
 
+
+            
             cart = request.session.get('cart', {})
             price = request.session.get('newprice', {})
+            auction_num = request.session.get('auction_num', {})
+            
             total = 0
             for id, quantity in cart.items():
                 product = get_object_or_404(Product, pk=id)
-                bid = Bid.objects.all()
+                auction = Auction.objects.get(product_id=product)
                 total += quantity * price
                 order_line_item = OrderLineItem(
                     order = order,
@@ -99,6 +103,7 @@ def bid_checkout(request):
             
             if customer.paid:
                 messages.error(request, "You have successfully paid")
+                print("AND: " + str(auction.delete()))
                 request.session['cart'] = {}
                 return redirect(reverse('products'))
             else:
