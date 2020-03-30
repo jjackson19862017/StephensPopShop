@@ -279,4 +279,8 @@ While on Call with Mentor my checkout payment method broke, hes the fix.
 
 IDEA: Allowing the owner to delete any auctions that he wants to, just incase they have made an error or theres a stock error.
 
+Complete IDEA
+
+--> "Cancel Auction Button"
+
 IDEA: change widget for date and time selector.

@@ -22,6 +22,12 @@
                 </div>
             </div>
             <div class="panel-footer">
+                {% if user.is_superuser %}
+                <form action="{% url 'del_auction' %}" method="POST">
+                    {% csrf_token %}
+                    <input type="hidden" name="product_id" value={{ auction.product_id.id }} />
+                    <span class="input-group-btn"><button class="btn btn-danger full-width">Cancel Auction</button></span>
+                </form>{%endif%}
                 <p class="product-text text-center">Status: <span> {{ auction.status }} </span></p>
                 <p class="product-text text-center">Bidnumber: <span> {{ auction.bid_number }} </span></p>
                 <p class="product-text text-center">Current Bid: £<span> {{ auction.current_price }} </span></p>
@@ -37,7 +43,6 @@
                 </form>
                 {% elif auction.current_bidder == user.username%}
                 <h4 class="text-center">YOUR WINNING</h4>
-
                 {% endif %}
             </div>
         </div>

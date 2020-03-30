@@ -24,6 +24,18 @@ def all_auctions(request):
         
     return render(request, "index.html")
 
+def del_auction(request):
+    """ The Owner can request that the Auction been Cancelled before the Time is alloted"""
+    if request.method == "POST":
+        product_id = request.POST['product_id']
+        auction = Auction.objects.get(product_id=product_id)
+        product = Product.objects.get(id=product_id)
+        current_auction = Auction.objects.filter(product_id=product_id)
+        
+        current_auction.delete()
+            
+        return redirect(reverse('auctions'))
+
 def open_auctions(request):
     """ Creates a view so only registered users can see the auctions that are currently open """
     if request.user.is_authenticated:
@@ -33,7 +45,7 @@ def open_auctions(request):
         messages.error(request, "Im sorry but you need to be logged in")
         return redirect(reverse('index'))
         
-    return render(request, "index.html")    
+    return render(request, "index.html") 
 
 def open_auction(request):
     
