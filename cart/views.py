@@ -48,7 +48,6 @@ def adjust_cart(request, id):
     Adjust the quantity of the specified product to the specified
     amount
     """
-    print(request.POST)
     quantity = int(request.POST.get('quantity'))
     cart = request.session.get('cart', {})
 

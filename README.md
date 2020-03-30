@@ -250,3 +250,7 @@ Fixed the code so that either Products and Winning Bids will goto the cart.
 The only issue, which I know I dont have time to fix is that you can't mix the two types of products, because otherwise the cart won't display the right prices.
 
 --> "Bids and Products Purchasing Working"
+
+Updated the Winning Bid Checkout on looks and modified the Models.
+
+--> "Checkout Update"

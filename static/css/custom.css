@@ -170,3 +170,10 @@ legend {
 p.help-block {
     color: white;
 }
+
+
+/* Styling */
+
+.full-width {
+    width: 100%;
+}

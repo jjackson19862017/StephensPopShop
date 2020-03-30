@@ -4,7 +4,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404, redirect, render, reverse
 from django.utils import timezone
-
+from bids.models import Bid
 from products.models import Product
 
 from .forms import MakePaymentForm, OrderForm
@@ -63,6 +63,7 @@ def checkout(request):
     return render(request, "checkout.html", {'order_form': order_form, 'payment_form': payment_form, 'publishable':settings.STRIPE_PUBLISHABLE})
 
 def bid_checkout(request):
+    
     if request.method=="POST":
         order_form = OrderForm(request.POST)
         payment_form = MakePaymentForm(request.POST)
@@ -77,6 +78,7 @@ def bid_checkout(request):
             total = 0
             for id, quantity in cart.items():
                 product = get_object_or_404(Product, pk=id)
+                bid = Bid.objects.all()
                 total += quantity * price
                 order_line_item = OrderLineItem(
                     order = order,

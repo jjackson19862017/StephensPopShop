@@ -23,9 +23,6 @@
             <p class="product-text text-center">Status: <span> {{ i.auction_id.status }} </span></p>
 
             {% if i.user_id.username == user.username %}
-
-
-
             <form action="{% url 'bid_to_cart' i.product_id.id %}" method="post">
                 {% csrf_token %}
                 <div class="input-group">
