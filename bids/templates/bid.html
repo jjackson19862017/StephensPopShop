@@ -27,7 +27,7 @@
                 {% csrf_token %}
                 <div class="input-group">
                     <input type="hidden" name="auction_num" value="{{ i.auction_id.id }}" class="form-control" placeholder="">
-                    <input type="hidden" name="price" value="{{ i.bid_price }}" class="form-control" placeholder="">
+                    <input type="text" name="price" value="{{ i.bid_price|floatformat:2 }}" class="form-control" placeholder="">
                     <input type="hidden" name="quantity" value="1" class="form-control" placeholder="Quantity">
                     <div class="input-group-btn text-center">
                         <button class="btn btn-success" type="submit">Pay</button>

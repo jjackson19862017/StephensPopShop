@@ -263,4 +263,16 @@ Updated the Bidcheckout with the ability to delete auctions on successul payment
 
 My first test deleted all auctions, however in my haste I had selected all auctions.  So I confined my parameters to product id's.
 
+Done
+
 --> "Auction Deleting"
+
+Fixed Two Decimal place in newprice from bidding.
+
+When you open auctions it searches for any closed auctions and changes them to closed, so the user only sees open ones.
+
+--> "Tweaks"
+
+IDEA: Allowing the owner to delete any auctions that he wants to, just incase they have made an error or theres a stock error.
+
+IDEA: change widget for date and time selector.

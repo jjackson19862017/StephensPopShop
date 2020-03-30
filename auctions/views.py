@@ -13,6 +13,10 @@ def all_auctions(request):
     """ Creates a view so only registered users can see the auctions """
     if request.user.is_authenticated:
         auctions = Auction.objects.all()
+        for auction in auctions:
+            if not timezone.now() >= auction.start_time and not timezone.now() < auction.end_time:
+                auction.status = "Closed"
+            
         return render(request, "auction.html", {"auctions": auctions})
     else:
         messages.error(request, "Im sorry but you need to be logged in")
