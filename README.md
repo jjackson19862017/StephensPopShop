@@ -284,3 +284,15 @@ Complete IDEA
 --> "Cancel Auction Button"
 
 IDEA: change widget for date and time selector.
+
+I googled a date time picker, I have saved it for now but I dont really like it.
+
+I have found a better date time picker, <https://pypi.org/project/django-bootstrap-datepicker-plus/>
+
+Unfortunately couldnt get it working so Plan C <https://stackoverflow.com/questions/3367091/whats-the-cleanest-simplest-to-get-running-datepicker-in-django/49064892>
+
+Plan D would work either, you would think that using the in-built date picker would work but NO.
+
+I have spent nearly 6 hours looking for a date picker, to no success.  So instead of the User making an error inputing the date and time.  I have just set a 7 day auction.
+
+--> "Seven Day Auction"
