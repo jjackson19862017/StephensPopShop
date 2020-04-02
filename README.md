@@ -462,3 +462,9 @@ Setup for Heroku & Postgres
 
 --> "Setup for Heroku & Postgres"
 
+Gone through the E-Commence Tutorial Videos
+
+- Created a Bucket on AWS
+- Pushed all Static/Media files
+
+--> "Working StephensPopShop"
