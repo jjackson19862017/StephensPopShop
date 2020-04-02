@@ -474,3 +474,7 @@ Gone through the E-Commence Tutorial Videos
 Setup Travis Testing
 
 --> "Setup Travis Testing"
+
+Fixed Local & Remote Database Location for Travis
+
+--> "Travis Database Location Fix"
