@@ -457,3 +457,8 @@ While I was doing my testing, I thought about CRUD.  Am I for filling all the cr
 Should I have an option to delete products?
 
 --> "CRUD"
+
+Setup for Heroku & Postgres
+
+--> "Setup for Heroku & Postgres"
+
