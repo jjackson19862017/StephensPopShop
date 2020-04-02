@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 
 class UserProfile(models.Model):
+    """ User Profile Model Details """
     UNITEDKINGDOM = 'UK'
     UNITEDSTATES = 'US'
     IRELAND = 'IR'

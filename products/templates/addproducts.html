@@ -1,4 +1,6 @@
-{% extends 'base.html' %} {% load bootstrap_tags %}{% block navbar_title %} Pop Shop - Add Products {% endblock navbar_title %}{% block content %}
+{% extends 'base.html' %} {% load bootstrap_tags %}
+<!-- Changes the Brand in the Navbar -->{% block navbar_title %} Pop Shop - Add Products {% endblock navbar_title %}
+<!-- Changes the Brand in the Navbar -->{% block content %}
 <div class="jumbotron text-center">
     <div class="container">
         <form method="POST" action="{% url 'addproducts' %}" enctype="multipart/form-data" class="accountform">

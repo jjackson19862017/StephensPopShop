@@ -1,4 +1,6 @@
-{% extends 'base.html' %}{% block navbar_title %} Pop Shop - Auctions {% endblock navbar_title %} {% block content %}
+{% extends 'base.html' %}
+<!-- Changes the Brand in the Navbar -->{% block navbar_title %} Pop Shop - Auctions {% endblock navbar_title %}
+<!-- Changes the Brand in the Navbar -->{% block content %}
 
 <div class="row">
     <div class="jumbotron text-center">
@@ -7,6 +9,7 @@
             <p>Below are New Items that nobody has bid on.<br>Be the first to bid.<br>Once an Auction has ended and you are the winner.<br>Please head to the Checkout to Claim your Prize.</p>
         </div>
     </div>
+    <!-- Populates the Page with all the Open Auctions -->
     {% for auction in auctions %}{% if auction.status == "Open" %}
     <div class="col-xs-12 col-sm-6 col-md-4 display panel panel-primary">
         <div class="panel-heading text-center">
@@ -22,42 +25,50 @@
                 </div>
             </div>
             <div class="panel-footer">
-                {% if user.is_superuser %}
-                <form action="{% url 'del_auction' %}" method="POST">
-                    {% csrf_token %}
-                    <input type="hidden" name="product_id" value={{ auction.product_id.id }} />
-                    <span class="input-group-btn"><button class="btn btn-danger full-width">Cancel Auction</button></span>
-                </form>{%endif%}
-                <p class="product-text text-center">Status: <span> {{ auction.status }} </span></p>
-                <p class="product-text text-center">Bidnumber: <span> {{ auction.bid_number }} </span></p>
+
                 <p class="product-text text-center">Current Bid: £<span> {{ auction.current_price }} </span></p>
-                <p class="product-text text-center">Current Bidder: <span> {{ auction.current_bidder }} </span></p>
+
                 {%if auction.current_bidder != user.username%}
                 <form action="{% url 'open_auction' %}" method="POST">
                     {% csrf_token %}
                     <div class="input-group">
                         <input type="hidden" name="product_id" value={{ auction.product_id.id }} />
-                        <input name="UpBid" type="number" min="5" max="9999" class="form-control" placeholder="Enter minimum £ 5">
+                        <input name="UpBid" type="number" min="5" max="9999" class="form-control" placeholder="Enter minimum £ 5" required>
                         <span class="input-group-btn"><button class="btn btn-success">Increase Bid</button></span>
                     </div>
                 </form>
                 {% elif auction.current_bidder == user.username%}
                 <h4 class="text-center">YOUR WINNING</h4>
                 {% endif %}
+                <br>
+                <!-- Superuser can have the option to cancel auction -->
+                {% if user.is_superuser %}
+                <form action="{% url 'del_auction' %}" method="POST">
+                    {% csrf_token %}
+                    <input type="hidden" name="product_id" value={{ auction.product_id.id }} />
+                    <span class="input-group-btn"><button class="btn btn-danger full-width">Cancel Auction</button></span>
+                </form>{%endif%}
+                <!-- Superuser can have the option to cancel auction -->
             </div>
         </div>
     </div>
-    {%endif%} {% empty %}
+    {%endif%}
+    <!-- If there are no Open Auctions then it will display a message -->{% empty %}
     <div class="jumbotron text-center">
         <div class="container">
             <h3 class="text-center">Sorry, but there are no Auctions to display.</h3>
+            <!-- Unless your a Superuser and gives you an option to start one. -->
             {% if user.is_superuser %}
             <p class="text-center">Would you like to Start an Auction?</p>
-            <p><span><a class="btn btn-success btn-lg" href="{% url 'add_auctions' %}" role="button"><i class="fa fa-plus"></i> Start Auction</a></span> {% else %}
+            <p><span><a class="btn btn-success btn-lg" href="{% url 'add_auctions' %}" role="button"><i class="fa fa-plus"></i> Start Auction</a></span>
+                <!-- Unless your a Superuser and gives you an option to start one. -->
+                {% else %}
                 <p class="text-center">Please comeback another time.</p>
                 {% endif %}
+                <!-- If there are no Open Auctions then it will display a message -->
         </div>
     </div> {% endfor %}
+    <!-- Populates the Page with all the Open Auctions -->
 </div>
 
 

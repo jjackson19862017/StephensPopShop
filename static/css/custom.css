@@ -1,3 +1,10 @@
+/* Styling */
+
+.uppercase {
+    text-transform: uppercase;
+}
+
+
 /* Navbar for SuperUser */
 
 .superuser {

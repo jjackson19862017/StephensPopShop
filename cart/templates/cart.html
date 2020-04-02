@@ -1,4 +1,6 @@
-{% extends 'base.html' %} {% load static from staticfiles %} {% load bootstrap_tags %} {% block navbar_title %} Pop Shop - Cart {% endblock navbar_title %} {% block content %}
+{% extends 'base.html' %} {% load static from staticfiles %} {% load bootstrap_tags %}
+<!-- Changes the Brand in the Navbar -->{% block navbar_title %} Pop Shop - Cart {% endblock navbar_title %}
+<!-- Changes the Brand in the Navbar -->{% block content %}
 <div class="row row-flex">
     <div class="display panel panel-primary">
         <div class="panel-heading text-center">
@@ -6,14 +8,16 @@
         </div>
         <!-- Table -->
         <table class="table">
+            <!-- Table Header -->
 
             <tr>
                 <th>Product Name</th>
                 <th>Cost</th>
                 <th>Qty</th>
             </tr>
+            <!-- Table Header -->
+            <!-- Table Body -->
             {% for item in cart_items %}
-
             <tr>
                 <td>{{ item.product.name }}</td>
                 <td>£{{ item.product.instant_buy_price }}</td>
@@ -24,7 +28,7 @@
                             <label for="exampleInputAmount" class="sr-only">New Qty</label>
                             <div class="input-group">
                                 <div class="input-group-addon">Qty</div>
-                                <input name="quantity" type="number" min="0" max="999" class="form-control">
+                                <input name="quantity" type="number" min="0" max="999" class="form-control" required>
                                 <div class="input-group-addon">{{item.quantity}}</div>
                             </div>
                         </div>
@@ -33,11 +37,13 @@
                 </td>
             </tr>
             {% endfor %}
+            <!-- Table Body -->
+
         </table>
+        <!-- Table -->
+
         <div class="panel-footer footer-blue">
-            <h3>Total
-                <span aria-hidden="true"></span>£{{ total }}</h3>
-            <a href="{% url 'checkout' %}" class="btn btn-success" role="button"><span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>Checkout</a>
+            <a href="{% url 'checkout' %}" class="btn btn-success full-width" role="button"><span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>  Your Total comes to £{{total}}, Head to Checkout</a>
         </div>
     </div>
 </div>

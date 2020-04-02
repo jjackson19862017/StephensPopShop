@@ -12,7 +12,7 @@ I will be using previous code, from my past attempts to save me time.  As I only
 
 ## Lets Get Down To Business
 
-For my Fourth and Final Milestone Project have chosen to build a project based on an auction website involving Pop!Vinyl's.  The goal of the website is for the Owner to advertise his Pop!Vinyl collection and sell them to the public involving either bidding for items or buying them out-right.
+For my Fourth and Final Milestone Project have choosen to build a project based on an auction website involving Pop!Vinyl's.  The goal of the website is for the Owner to advertise his Pop!Vinyl collection and sell them to the public involving either bidding for items or buying them out-right.
 
 I will set up an authentication and authorisation.  Where only registered users can bid and buy items that are up for auction.
 
@@ -287,6 +287,8 @@ IDEA: change widget for date and time selector.
 
 I googled a date time picker, I have saved it for now but I dont really like it.
 
+### Tuesday 31st March 2020
+
 I have found a better date time picker, <https://pypi.org/project/django-bootstrap-datepicker-plus/>
 
 Unfortunately couldnt get it working so Plan C <https://stackoverflow.com/questions/3367091/whats-the-cleanest-simplest-to-get-running-datepicker-in-django/49064892>
@@ -296,3 +298,130 @@ Plan D would work either, you would think that using the in-built date picker wo
 I have spent nearly 6 hours looking for a date picker, to no success.  So instead of the User making an error inputing the date and time.  I have just set a 7 day auction.
 
 --> "Seven Day Auction"
+
+When I tried to log out of my user there came an error about "conversion from dict to Decimal is not supported".
+
+This was the code that was entered when I fixed my decimal and rounding.
+
+So I have created a fix for it.
+
+I have also commented on my code for easy reading.
+
+--> "Decimal Fix, Code Commenting"
+
+Now commenting on code inside my django project and testing anything that needs testing.
+
+#### Accounts
+
+##### Templates
+
+- Index.html: Added Comments
+- Login.html: Added Comments
+- Profile.html: Added Comments
+- Register.html: Added Comments
+
+###### Testing - Index.html
+
+Clicked "Login"     > Took me to Login Screen       >   PASS
+Clicked "Register"  > Took me to Register Screen    >   PASS
+
+###### Testing - Login.html
+
+Logged in with known user > PASS
+Tried to Login with wrong Password > PASS (Error Message)
+
+###### Testing - Register.html
+
+Create new user     > Filled in details > FAIL (Reverse for 'home' not found. 'home' is not a valid view function or pattern name.)
+
+Create new user     > Filled in details > PASS
+
+#### Auctions
+
+- addauctions.html: Added Comments
+- auctions.html: Added Comments, Removed Debug information that End User didn't need to know or see.
+
+##### Testing - addauctions.html
+
+Choose Product for auction > Clicked Start > PASS
+Choose Same Product for auction > Clicked Start > FAIL (Can't have the same product up for auction)
+Choose Same Product for auction > Clicked Start > PASS (Error Message is present, thank you to <https://youtu.be/wVnQkKf-gHo> for the refresh and understanding)
+
+##### Testing - auctions.html
+
+From previous test above > Open Auctions appearing on page > PASS
+Try to Increase Bid > Raise by £5 > PASS
+From Previous Test, to stop users bidding again until someone else has bidded it takes away the UpBid Form. > PASS
+From Previous Test, Bidding is available to me because I Logged out as the superuser into a different user account > PASS
+Try to Bid Nothing > FAIL (invalid literal for int() with base 10: '', Fixed with HTML Required Form Validation)
+Try to Bid Nothing > PASS (Validation Message)
+As Superuser, Cancel Auction > PASS
+After all auctions have been Cancelled, Option to start new auction appears > PASS
+If auction has ended then it will update the auction table and that auction will not appear > PASS
+
+#### Bids
+
+- bid.html: Added Comments, IDEA: If winner doesnt want it just cancel the Auction.
+
+##### Testing - bids.html
+
+Click Pay > Takes me to BidCheckout > PASS
+
+#### Cart
+
+- cart.html: Added Comments
+
+##### Testing - cart.html
+
+Change Quantity to 3 > PASS (Quantity and Total Changes)
+Change Quantity to 0 > PASS (Empties Cart)
+Click on Checkout > PASS (Takes me to Checkout)
+
+#### Checkout
+
+- bidcheckout.html: Added Comments, Also cleaned up the UI
+- checkout.html: Added Comments, Also cleaned up the UI
+
+##### Testing - bidcheckout.html
+
+Fill in details and Card Details 4242424242424242 CVV 111 > We have paid for the Bid and the Auction Deletes itself > PASS
+Blank Forms, Validation should run > PASS
+Fill in details and Card Details 4242424242424242 CVV 111, However the expiry date had passed > PASS (Wouldn't send form)
+
+##### Testing - checkout.html
+
+Fill in details and Card Details 4242424242424242 CVV 111 > We have paid for the Bid and the Auction Deletes itself > PASS
+Blank Forms, Validation should run > PASS
+Fill in details and Card Details 4242424242424242 CVV 111, However the expiry date had passed > PASS (Wouldn't send form)
+
+#### Products
+
+- products.html: Added Comments
+- addproducts.html: Added Comments
+
+##### Testing - products.html
+
+Left Quantity blank, Validation should run > PASS
+Value -1 Quantity, Validation should run > PASS
+Value 4 Quantity > PASS (Took me to cart, don't like that going to change it to stay on the products page.)
+Value 4 Quantity > PASS (Added product to cart and told user by a message.)
+
+##### Testing - addproducts.html
+
+Filled out all information on the page > PASS (Added Product, however I realised there is no Validation.)
+Filled out all information on the page the same Name as previous product, this should produce a Validation Error > PASS (No two products can have the same name.)
+Left the form Blank, Validation should run > PASS (Required field for Name.)
+Filled in the following fields, Name, Description and Character > PASS (I would prefer a default image if one is not provided.)
+Filled in the following fields, Name, Description and Character > PASS (Default image is used if one isn't submitted.)
+
+#### Base
+
+- base.html: Added Comments
+
+##### Testing - base.html
+
+Product Search - "Ku" > PASS (Returns Goku)
+Product Search - "Go" > PASS (Returns four items with go in them)
+Product Search - "" > PASS (Returns All Products)
+
+--> "Commenting Code and Testing"

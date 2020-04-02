@@ -16,6 +16,8 @@ class ProductsForm(forms.ModelForm):
         series = self.cleaned_data.get('series')
         character = self.cleaned_data.get('character')
 
-        if Product.objects.filter(name=name).exclude(name=name):
-            raise forms.ValidationError(u'Products must be unique.')
+    def clean_name(self, *args, **kwargs):
+        name = self.cleaned_data.get("name")
+        if Product.objects.filter(name=name):
+            raise forms.ValidationError(u'There is a Product with this name already.  Please Closed the previous Auction before Starting a new one.')
         return name

@@ -15,11 +15,14 @@
 </head>
 
 <body>
-
+    <!-- If Superuser they get a different coloured Navbar, Other users get a standard blue Navbar -->
     {% if user.is_superuser %}
     <nav class="navbar navbar-default superuser navbar-fixed-top">
+
+
         {% else %}
         <nav class="navbar navbar-default navbar-fixed-top">
+            <!-- If Superuser they get a different coloured Navbar, Other users get a standard blue Navbar -->
             {% endif %}
             <div class="container-fluid">
                 <!-- Brand and toggle get grouped for better mobile display -->
@@ -31,8 +34,10 @@
               <span class="icon-bar"></span>
             </button>
                     <a class="navbar-brand" href="{% url 'index' %}">
-                {% block navbar_title %}{% endblock %}
-                </a>
+                        <!-- Changes the Brand in the Navbar -->
+                        {% block navbar_title %}{% endblock %}
+                        <!-- Changes the Brand in the Navbar -->
+                    </a>
                 </div>
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
@@ -40,6 +45,7 @@
 
 
                     <ul class="nav navbar-nav navbar-right">
+                        <!-- Products/Search Drop-down -->
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> Search By<span class="caret"></span></a>
                             <ul class="dropdown-menu">
@@ -49,6 +55,8 @@
                                 <li><a href="{% url 'SAO_search' %}"><i class="fa fa-search" aria-hidden="true"></i> Sword Art Online</a></li>
                             </ul>
                         </li>
+                        <!-- Products/Search Drop-down -->
+                        <!-- Superuser Options -->
                         {% if user.is_superuser %}
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> Create<span class="caret"></span></a>
@@ -57,7 +65,10 @@
                                 <li><a href="{% url 'add_auctions' %}"><i class="fa fa-plus" aria-hidden="true"></i> Auction</a></li>
                             </ul>
                         </li>
-                        {% endif %} {% if user.is_authenticated %}
+                        <!-- Superuser Options -->
+                        {% endif %}
+                        <!-- Registered User -->
+                        {% if user.is_authenticated %}
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> Auctions<span class="caret"></span></a>
                             <ul class="dropdown-menu">
@@ -65,6 +76,8 @@
                                 <li><a href="{% url 'bid' %}"><i class="fa fa-arrow-right"></i> Closed Auctions</a></li>
                             </ul>
                         </li>
+                        <!-- Registered User -->
+                        <!-- Shopping Cart -->
                         {% if product_count == 0 %} {% else %}
 
                         <li>
@@ -74,6 +87,8 @@
                             </a>
                         </li>
                         {% endif %}
+                        <!-- Shopping Cart -->
+                        <!-- Registered User -->
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> {{ user.username }}<span class="caret"></span></a>
                             <ul class="dropdown-menu">
@@ -81,19 +96,23 @@
                                 <li><a href="{% url 'logout' %}"><i class="fa fa-sign-out"></i> Log Out</a></li>
                             </ul>
                         </li>
-
+                        <!-- Registered User -->
+                        <!-- Not a Registered User -->
                         {% else %}
                         <li><a href="{% url 'register' %}"><i class="fa fa-user-plus"></i> Register</a></li>
                         <li><a href="{% url 'login' %}"><i class="fa fa-sign-in"></i> Log In</a></li>
                         {% endif %}
+                        <!-- Not a Registered User -->
 
                     </ul>
+                    <!-- Product Search -->
                     <form class="navbar-form navbar-right" action="{% url 'search' %}" method="get">
                         <div class="form-group">
                             <input type="text" class="form-control" placeholder="Product Search" name="q">
                         </div>
                         <button type="submit" class="btn btn-default"><i class="fa fa-search" aria-hidden="true"></i> Search</button>
                     </form>
+                    <!-- Product Search -->
                 </div>
                 <!-- /.navbar-collapse -->
             </div>

@@ -73,9 +73,7 @@ def bid_checkout(request):
             order = order_form.save(commit=False)
             order.date = timezone.now()
             order.save()
-
-
-            
+           
             cart = request.session.get('cart', {})
             price = request.session.get('newprice', {})
             auction_num = request.session.get('auction_num', {})
@@ -105,7 +103,7 @@ def bid_checkout(request):
             
             if customer.paid:
                 messages.error(request, "You have successfully paid")
-                print("AND: " + str(auction.delete()))
+                auction.delete()
                 request.session['cart'] = {}
                 return redirect(reverse('products'))
             else:

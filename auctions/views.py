@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.contrib import messages, auth
 from django.contrib.auth.models import User
 from django.utils import timezone
+
 from datetime import datetime, timedelta
 from .models import Auction
 from .forms import AuctionForm
@@ -13,10 +14,14 @@ def all_auctions(request):
     """ Creates a view so only registered users can see the auctions """
     if request.user.is_authenticated:
         auctions = Auction.objects.all()
+        
+        """ Checks to see if any auctions have finished """
         for auction in auctions:
-            if not timezone.now() >= auction.start_time and not timezone.now() < auction.end_time:
+            if not timezone.now() < auction.end_time:
                 auction.status = "Closed"
-            
+                auction.save()
+            return render(request, "auction.html", {"auctions": auctions})
+
         return render(request, "auction.html", {"auctions": auctions})
     else:
         messages.error(request, "Im sorry but you need to be logged in")
@@ -36,30 +41,20 @@ def del_auction(request):
             
         return redirect(reverse('auctions'))
 
-def open_auctions(request):
-    """ Creates a view so only registered users can see the auctions that are currently open """
-    if request.user.is_authenticated:
-        auctions = Auction.objects.filter(status__exact='Open')
-        return render(request, "auction.html", {"auctions": auctions})
-    else:
-        messages.error(request, "Im sorry but you need to be logged in")
-        return redirect(reverse('index'))
-        
-    return render(request, "index.html") 
-
 def open_auction(request):
     
     """ Allows a registered user to bid on open auctions """
-    
     if request.method == "POST":
             product_id = request.POST['product_id']
             auction = Auction.objects.get(product_id=product_id)
             
             """ Make sure Auction is still Open """
-            if timezone.now() >= auction.start_time and timezone.now() < auction.end_time:
+            if timezone.now() < auction.end_time:
                 product = Product.objects.get(id=product_id)
                 current_bid = Bid.objects.filter(product_id=product_id)
+                
                 if current_bid:
+                    """ If there has been a previous Bid then """
                     print("Route A")
                     bid = current_bid[0]
                     bid.user_id = request.user
@@ -72,6 +67,7 @@ def open_auction(request):
                     auction.current_bidder = str(bid.user_id)
                     auction.save()
                 else:
+                    """ If there has not been a previous Bid then """
                     print("Route B")
                     new_bid = Bid()
                     new_bid.product_id = product
@@ -98,7 +94,9 @@ def open_auction(request):
 def add_auctions(request):
     """ Allows Owner to Open Auctions """
     if request.method == 'POST':
+      
         AF = AuctionForm(request.POST)
+       
         if AF.is_valid():
             AF.save()
             messages.error(request, "Auction Started!")

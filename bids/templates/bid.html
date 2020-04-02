@@ -1,4 +1,6 @@
-{% extends 'base.html' %} {% load staticfiles %} {% load bootstrap_tags %} {% block navbar_title %} Pop Shop - Bids {% endblock navbar_title %}{% block content %}
+{% extends 'base.html' %} {% load staticfiles %} {% load bootstrap_tags %}
+<!-- Changes the Brand in the Navbar -->{% block navbar_title %} Pop Shop - Bids {% endblock navbar_title %}
+<!-- Changes the Brand in the Navbar -->{% block content %}
 
 <div class="row">
     <div class="jumbotron text-center">
@@ -7,7 +9,10 @@
             <p>If you wish to Bid on these items you can.<br>Once an Auction has ended and you are the winner.<br>Please head to the Checkout to Claim your Prize.</p>
         </div>
     </div>
-    {% for i in bid %} {% if i.auction_id.status == "Closed" %}
+
+    {% for i in bid %}
+    <!-- If Auction is Closed then -->
+    {% if i.auction_id.status == "Closed" %}
     <div class="col-xs-12 col-sm-6 col-md-4 display panel panel-primary">
         <div class="panel-heading text-center">
             <h3 class="panel-title">{{ i.product_id.name}}</h3>
@@ -16,39 +21,45 @@
             <div class="product" style="background-image: url('{{MEDIA_URL}}{{ i.product_id.image }}')"></div>
             <p class="product-description">{{ i.product_id.description }}</p>
             <hr class='block-divider block-divider--longer'>
-            <p>Winning Bidder: {{ i.user_id.username }}</p>
-            <p>Winning Bid: £{{ i.bid_price }}</p>
+
         </div>
         <div class="panel-footer">
-            <p class="product-text text-center">Status: <span> {{ i.auction_id.status }} </span></p>
-
+            <p class="text-center">Winning Bidder: {{ i.user_id.username }}</p>
+            <p class="text-center">Winning Bid: £{{ i.bid_price }}</p>
+            <!-- If the user logged in is winner -->
             {% if i.user_id.username == user.username %}
             <form action="{% url 'bid_to_cart' i.product_id.id %}" method="post">
                 {% csrf_token %}
                 <div class="input-group">
                     <input type="hidden" name="auction_num" value="{{ i.auction_id.id }}" class="form-control" placeholder="">
-                    <input type="text" name="price" value="{{ i.bid_price|floatformat:2 }}" class="form-control" placeholder="">
+                    <input type="hidden" name="price" value="{{ i.bid_price|floatformat:2 }}" class="form-control" placeholder="">
                     <input type="hidden" name="quantity" value="1" class="form-control" placeholder="Quantity">
                     <div class="input-group-btn text-center">
-                        <button class="btn btn-success" type="submit">Pay</button>
+                        <button class="btn btn-success full-width" type="submit">Pay</button>
                     </div>
                 </div>
             </form>
+            <!-- If the user logged in is winner -->
             {% else %}
+            <!-- Losers message -->
             <h4 class="text-center">YOUR NOT A WINNER</h4>
             {% endif %}
+            <!-- Losers message -->
         </div>
     </div>
 
-    {%endif%} {% empty %}
+    {%endif%}
+    <!-- If Auction is Closed then -->{% empty %}
     <div class="jumbotron text-center">
         <div class="container">
             <h3 class="text-center">Sorry, but there are no Bids to display.</h3>
+            <!-- Unless your a Superuser and gives you an option to start one. -->
             {% if user.is_superuser %}
             <p class="text-center">Would you like to Start an Auction?</p>
             <p><span><a class="btn btn-success btn-lg" href="{% url 'add_auctions' %}" role="button"><i class="fa fa-plus"></i> Start Auction</a></span> {% else %}
                 <p class="text-center">Please comeback another time.</p>
                 {% endif %}
+                <!-- Unless your a Superuser and gives you an option to start one. -->
         </div>
     </div>
     {% endfor %}

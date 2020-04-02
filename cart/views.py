@@ -1,5 +1,7 @@
 from django.shortcuts import render, redirect, reverse
 from decimal import Decimal
+from django.contrib import messages
+from products.views import all_products
 
 # Create your views here.
 def view_cart(request):
@@ -10,7 +12,7 @@ def view_cart(request):
 def add_to_cart(request, id):
     """Add a quantity of the specified product to the cart"""
     quantity = int(request.POST.get('quantity'))
-    price = float(request.POST.get('price'))
+    price = request.POST.get('price')
     
     print("id: " + str(id))
     print("price: " + str(price))
@@ -19,16 +21,17 @@ def add_to_cart(request, id):
     if id in cart:
         cart[id] = int(cart[id]) + quantity  
     else:
-        cart[id] = cart.get(id, quantity) 
+        cart[id] = cart.get(id, quantity)   
 
     request.session['cart'] = cart
     request.session['newprice'] = price
-    return redirect(reverse('view_cart'))
+    messages.error(request, "Product added to cart.")
+    return redirect(reverse('products'))
 
 def bid_to_cart(request, id):
     """Add a quantity of the specified product to the cart"""
     quantity = int(request.POST.get('quantity'))
-    price = str(request.POST.get('price'))
+    price = request.POST.get('price')
     auction_num = int(request.POST.get('auction_num'))
     
     print("id: " + str(id))
@@ -40,6 +43,7 @@ def bid_to_cart(request, id):
     else:
         cart[id] = cart.get(id, quantity) 
 
+    
     request.session['cart'] = cart
     request.session['newprice'] = price
     request.session['auction_num'] = auction_num

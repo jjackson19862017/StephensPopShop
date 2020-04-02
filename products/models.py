@@ -20,7 +20,7 @@ class Product(models.Model):
     image = models.ImageField(upload_to='images/',
                              width_field="width_field",
                              height_field="height_field",
-                             blank=True)
+                             default='default.png')
     height_field = models.IntegerField(default=0)
     width_field = models.IntegerField(default=0)
     series = models.CharField(max_length=16, choices=SERIES_CHOICES, default= '')

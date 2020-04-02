@@ -1,6 +1,9 @@
- {% extends 'base.html' %} {% load bootstrap_tags %}{% block navbar_title %} Pop Shop - Add Auctions {% endblock navbar_title %}{% block content %}
+ {% extends 'base.html' %} {% load bootstrap_tags %}
+<!-- Changes the Brand in the Navbar -->{% block navbar_title %} Pop Shop - Add Auctions {% endblock navbar_title %}
+<!-- Changes the Brand in the Navbar -->{% block content %}
 <div class="jumbotron text-center">
     <div class="container">
+        <!-- Start Auction Form -->
         <form method="POST" action="{% url 'add_auctions' %}" class="accountform">
             <fieldset class="form-group">
                 <legend>Start Auction</legend>
@@ -8,5 +11,6 @@
                 <button type="submit" class="btn btn-lg btn-success full-width">Start Auction</button>
             </fieldset>
         </form>
+        <!-- Start Auction Form -->
         <h3>THIS AUCTION WILL LAST 7 DAYS</h3>
         {% endblock content %}

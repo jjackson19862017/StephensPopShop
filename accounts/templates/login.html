@@ -1,6 +1,9 @@
-{% extends "base.html" %} {% load bootstrap_tags %} {% block navbar_title %} Pop Shop - Login {% endblock navbar_title %} {% block content %}
+{% extends "base.html" %} {% load bootstrap_tags %}
+<!-- Changes the Brand in the Navbar -->{% block navbar_title %} Pop Shop - Login {% endblock navbar_title %}
+<!-- Changes the Brand in the Navbar -->{% block content %}
 <div class="jumbotron text-center">
     <div class="container">
+        <!-- Login Form -->
         <form method="post" action="{% url 'login' %}?next={{ next }}" class="accountform">
             <fieldset class="form-group">
                 <legend>LOG IN</legend>
@@ -11,6 +14,8 @@
                 <button type="submit" class="btn btn-lg btn-success"><i class="fa fa-sign-in"></i> Login</button>
             </fieldset>
         </form>
+        <!-- Login Form -->
+
     </div>
 </div>
 {% endblock %}
