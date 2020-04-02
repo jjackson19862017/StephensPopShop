@@ -425,3 +425,35 @@ Product Search - "Go" > PASS (Returns four items with go in them)
 Product Search - "" > PASS (Returns All Products)
 
 --> "Commenting Code and Testing"
+
+### Thursday 2nd April 2020
+
+While I was doing my testing, I thought about CRUD.  Am I for filling all the criteria.
+
+#### Create
+
+- Users
+- Products
+- Auctions
+- Bids
+
+#### Read
+
+- Users
+- Products
+- Auctions
+- Bids
+
+#### Update
+
+- Auctions
+- Bids
+
+#### Delete
+
+- Products
+- Auctions
+
+Should I have an option to delete products?
+
+--> "CRUD"
