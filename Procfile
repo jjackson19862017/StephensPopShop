@@ -1,1 +1,1 @@
-web: gunicorn ecommence.wsgi:application
+web: gunicorn popshop.wsgi:application
