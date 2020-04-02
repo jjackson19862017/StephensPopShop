@@ -49,7 +49,7 @@ INSTALLED_APPS = [
     'checkout',
     'auctions',
     'bids',
-    'storages'
+    'storages',
 ]
 
 MIDDLEWARE = [
