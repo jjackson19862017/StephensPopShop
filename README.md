@@ -1,5 +1,7 @@
 # Stephens Pop Shop
 
+[![Build Status](https://www.travis-ci.org/jjackson19862017/StephensPopShop.svg?branch=master)](https://www.travis-ci.org/jjackson19862017/StephensPopShop)
+
 This is my fourth milestone and ironically my fourth attempt.
 
 As this is my fourth attempt I will include links to my previous attempts that can be found at
@@ -468,3 +470,7 @@ Gone through the E-Commence Tutorial Videos
 - Pushed all Static/Media files
 
 --> "Working StephensPopShop"
+
+Setup Travis Testing
+
+--> "Setup Travis Testing"
