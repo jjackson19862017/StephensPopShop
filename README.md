@@ -478,3 +478,5 @@ Setup Travis Testing
 Fixed Local & Remote Database Location for Travis
 
 --> "Travis Database Location Fix"
+
+After many attempts to fix the broken Travis it works. :)f
