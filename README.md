@@ -480,3 +480,7 @@ Fixed Local & Remote Database Location for Travis
 --> "Travis Database Location Fix"
 
 After many attempts to fix the broken Travis it works. :)f
+
+It now works on Heroku, so i will add the remaining products and finish off my Readme file, then finally submit to Code Institute
+
+--> "Update Readme"
