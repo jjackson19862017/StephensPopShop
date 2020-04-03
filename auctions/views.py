@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.contrib import messages, auth
 from django.contrib.auth.models import User
 from django.utils import timezone
-
+from django.contrib.auth.decorators import login_required
 from datetime import datetime, timedelta
 from .models import Auction
 from .forms import AuctionForm
@@ -10,6 +10,7 @@ from products.models import Product
 from bids.models import Bid
 from accounts.models import UserProfile
 
+@login_required
 def all_auctions(request):
     """ Creates a view so only registered users can see the auctions """
     if request.user.is_authenticated:
@@ -29,6 +30,7 @@ def all_auctions(request):
         
     return render(request, "index.html")
 
+@login_required
 def del_auction(request):
     """ The Owner can request that the Auction been Cancelled before the Time is alloted"""
     if request.method == "POST":
@@ -40,7 +42,7 @@ def del_auction(request):
         current_auction.delete()
             
         return redirect(reverse('auctions'))
-
+@login_required
 def open_auction(request):
     
     """ Allows a registered user to bid on open auctions """
@@ -90,7 +92,7 @@ def open_auction(request):
     return redirect(reverse('auctions'))
         
 
-
+@login_required
 def add_auctions(request):
     """ Allows Owner to Open Auctions """
     if request.method == 'POST':

@@ -6,7 +6,6 @@ from django.shortcuts import get_object_or_404, redirect, render, reverse
 from django.utils import timezone
 from auctions.models import Auction
 from products.models import Product
-
 from .forms import MakePaymentForm, OrderForm
 from .models import OrderLineItem
 
@@ -63,6 +62,7 @@ def checkout(request):
 
     return render(request, "checkout.html", {'order_form': order_form, 'payment_form': payment_form, 'publishable':settings.STRIPE_PUBLISHABLE})
 
+@login_required
 def bid_checkout(request):
     
     if request.method=="POST":

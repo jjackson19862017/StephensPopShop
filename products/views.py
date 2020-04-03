@@ -1,6 +1,6 @@
 from django.contrib import messages
 from django.shortcuts import redirect, render, reverse
-
+from django.contrib.auth.decorators import login_required
 from .forms import ProductsForm
 from .models import Product
 
@@ -13,7 +13,7 @@ def all_products(request):
 def SAO_products(request):
     products = Product.objects.filter(series__exact='Sword Art Online')
     return render(request, "products.html", {"products":products})
-
+@login_required
 def addproducts(request):
     if request.method == 'POST':
        

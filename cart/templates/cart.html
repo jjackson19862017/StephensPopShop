@@ -2,14 +2,20 @@
 <!-- Changes the Brand in the Navbar -->{% block navbar_title %} Pop Shop - Cart {% endblock navbar_title %}
 <!-- Changes the Brand in the Navbar -->{% block content %}
 <div class="row row-flex">
+    <div class="jumbotron text-center">
+        <div class="container">
+            <h1>Pop Shop Cart</h1>
+            <p class="text-center">If you wish to amend your order you can do by,<br>Changing the Qty Value.<br><br>If you wish remove the item from your cart, please enter value as zero.</p>
+        </div>
+    </div>
+
     <div class="display panel panel-primary">
         <div class="panel-heading text-center">
-            <h1 class="panel-title">Cart</h1>
+            <h1 class="panel-title"></h1>
         </div>
         <!-- Table -->
         <table class="table">
             <!-- Table Header -->
-
             <tr>
                 <th>Product Name</th>
                 <th>Cost</th>
@@ -38,15 +44,11 @@
             </tr>
             {% endfor %}
             <!-- Table Body -->
-
         </table>
         <!-- Table -->
-
         <div class="panel-footer footer-blue">
             <a href="{% url 'checkout' %}" class="btn btn-success full-width" role="button"><span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>  Your Total comes to £{{total}}, Head to Checkout</a>
         </div>
     </div>
 </div>
-
-
 {% endblock %}
