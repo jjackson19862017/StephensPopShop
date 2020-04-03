@@ -303,6 +303,7 @@ Aaron Sinnott(Mentor)
 Anna(Tutor)
 Haley(Tutor)
 Friends on Slack
+Dehinde - Shogbanmu (Done a similar project, and I looked at the code to understand how things went together)
 
 ## Timeline
 

@@ -44,8 +44,8 @@ def del_auction(request):
         return redirect(reverse('auctions'))
 @login_required
 def open_auction(request):
-    
     """ Allows a registered user to bid on open auctions """
+    """ Thanks to Dehinde - Shogbanmu because I really struggled with this part """
     if request.method == "POST":
             product_id = request.POST['product_id']
             auction = Auction.objects.get(product_id=product_id)
